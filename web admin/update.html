@@ -1,0 +1,31 @@
+<html>
+
+<head>
+    <title>Edit Product</title>
+    <link rel="stylesheet" href="css/style_add.css" />
+</head>
+
+<body>
+    <h2 class="judul1">Form Input Data</h2>
+    <div class="form">
+        <form action="process_edit.php" method="POST" enctype="multipart/form-data">
+
+            <label for="name">Id Product:</label>
+            <input type="text" id="id_product" name="id_product" readonly><br><br>
+
+            <label for="name">Nama:</label>
+            <input type="text" id="name" name="name" value=""><br><br>
+
+            <label for="description">Keterangan:</label>
+            <textarea id="description" name="description"></textarea><br><br>
+
+            <label for="image">Gambar:</label>
+            <img src="uploads/" width="20%" height="20%"></img><br>
+            <input type="file" id="gambar" name="gambar"><br><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+
+</html>

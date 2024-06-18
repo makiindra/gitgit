@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ADMIN</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+  </head>
+
+  <body>
+    <div class="table-responsive">
+      <h3 class="judul1">Daftar Product</h3>
+      <div class="tabel1">
+        <button class="button"><a href="input.html"> Add Product</a></button>
+        <div class="tabel2">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th class="table-header" style="width: 200px; padding: 5px">
+                  Nama
+                </th>
+                <th class="table-header" style="width: 200px; padding: 5px">
+                  Keterangan
+                </th>
+                <th class="table-header">Gambar</th>
+              </tr>
+            </thead>
+            <?php
+            include 'connect.php';
+            $data = mysqli_query($conn, "select * from product");
+            while ($d = mysqli_fetch_array($data)) {
+                ?>
+
+            <tr>
+              <td class="table-data">
+                <?php echo $d['nama_product']; ?>
+              </td>
+              <td class="table-data">
+                <?php echo $d['keterangan_product']; ?>
+              </td>
+              <td class="table-data">
+                <a
+                  href="view_image.php?id_product=<?php echo $d['id_product']; ?>"
+                  target="_blank"
+                  ><?php echo $d['gambar_product']; ?></a
+                >
+              </td>
+              <td class="table-data">
+                <button class="button2">
+                  <a href="update.php?id_product=<?php echo $d['id_product'] ?>"
+                    >Edit</a
+                  >
+                </button>
+                <button class="button3">
+                  <a
+                    href="delete.php?id_product=<?php echo $d['id_product'] ?>"
+                    onclick="return confirm('Anda yakin akan menghapus data ini?')"
+                    >Hapus</a
+                  >
+                </button>
+              </td>
+            </tr>
+            <?php
+            }
+            ?>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
